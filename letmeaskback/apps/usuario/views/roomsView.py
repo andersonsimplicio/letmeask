@@ -37,6 +37,7 @@ class CheckRoomView(APIView):
             room = get_object_or_404(Rooms,pk=id_room)
             roomSerializer = RoomsSerializer(room)
         except Exception as e:
+            print(e)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         return Response(data={'room':roomSerializer.data},status=status.HTTP_200_OK)
@@ -46,7 +47,6 @@ class CreateQuestionView(CreateAPIView):
     queryset = Question.objects.all()
     authentication_classes = [authentication.TokenAuthentication,authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticated]
-
 
 
 class ListQuestionView(ListAPIView):
@@ -65,7 +65,6 @@ class ListQuestionView(ListAPIView):
             token = self.request.data['token']
             key = Token.objects.get(key=token)
         except Exception as e:
-            print(e)
             key=False
         if key:
             users = Usuario.objects.get(auth_token=key)
@@ -90,7 +89,6 @@ class ListQuestionView(ListAPIView):
             except Exception as e:
                 return Response(status=status.HTTP_204_NO_CONTENT)        
         return Response(data={'questions':qsSerialize.data},status=status.HTTP_200_OK)
-
 
 
 class LastQuestionView(ListAPIView):

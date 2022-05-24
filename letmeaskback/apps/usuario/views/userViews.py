@@ -25,7 +25,7 @@ class UserViewSet(APIView):
     def post(self, request,format=None):
         token = request.data['token']
         user = Token.objects.get(key=token)
-        # print(f'Usuario: {user.user}')
+        print(f'Usuario: {user.user}')
         queryset = Usuario.objects.get(email=user.user)
         
         serializer =UsuarioSerializer(queryset,context={"request": request})

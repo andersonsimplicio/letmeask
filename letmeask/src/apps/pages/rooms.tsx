@@ -52,7 +52,6 @@ export function Room() {
                     sala: roomID,
                     question: Newquestion,
                     autor: String(user?.id),
-
                 };
                 sendQuestion(question);
 
@@ -112,11 +111,9 @@ export function Room() {
                                         question={question}
                                     />
                                 </Question>
-
                             );
                         })}
                     </div>
-
                 </main>
             </div>
         </>

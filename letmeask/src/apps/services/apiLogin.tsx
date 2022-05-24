@@ -10,7 +10,7 @@ type User = {
 
 export async function singIn(username: string, password: string) {
     const url = 'http://localhost:8000/api-token-auth/';
-
+       
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -19,7 +19,7 @@ export async function singIn(username: string, password: string) {
     try {
         const response = await fetch(url, requestOptions);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
 
         if (data.token !== undefined)
             localStorage.setItem('token', data.token);

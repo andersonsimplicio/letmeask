@@ -25,10 +25,9 @@ export default function Modal() {
 
 
   };
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     setOpen(false);
-    singIn(username, password);
-    let token = localStorage.getItem('token');
+    let token  =  await singIn(username, password);
     if (token !== undefined && token !== '') {
       getUser();
       window.location.reload()

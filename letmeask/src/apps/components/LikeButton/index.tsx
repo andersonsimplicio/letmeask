@@ -25,13 +25,13 @@ export default function LikeButton({ question }: QuestionProps) {
     const { user } = useContext(authContext);
     const [isLike, setLike] = useState<String | undefined>(question.i_like)
     const [contLike, setContLike] = useState<number>(question.count_likes)
+
     async function handlerLikeQuestion(questionid: string) {
         if (user?.id) {
             LikeQuestions(String(user?.id), questionid);
             if (isLike === 'true') {
                 setLike('false');
                 let num = contLike - 1;
-
                 setContLike(num);
             } else {
                 let num = contLike + 1;
